@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using WebUI.Constants;
 
 namespace WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class VacancyController : Controller
     {
         public IActionResult Index()
         {
-            Header.Name = "JobFinder";
+            Header.Name = "Elan";
             return View();
         }
     }
