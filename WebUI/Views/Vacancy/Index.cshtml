@@ -10,20 +10,24 @@
 
                 @foreach (var item in Model)
                 {
-                    <div class="single-post d-flex flex-row">                        
+                    <div class="single-post d-flex flex-row">
                         <div class="details">
                             <div class="title d-flex flex-row justify-content-between">
                                 <div class="titles">
                                     <a href="single.html"><h4>@item.Position</h4></a>
                                     <h6>@item.Company</h6>
                                 </div>
+                                <ul class="btns">
+                                    <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+                                    <li><a href="#">Apply</a></li>
+                                </ul>
                             </div>
                             <p>
-                                Test
+                                @item.Requirements.Substring(0, 100) ...
                             </p>
-                            <h5>Job Nature: Full time</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                            <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                            <p class="address"><span class="lnr lnr-map"></span> @item.City.Name</p>
+                            <p class="address"><span class="lnr lnr-database"></span> @item.Salary</p>
+
                         </div>
                     </div>
                 }

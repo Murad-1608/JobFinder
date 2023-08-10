@@ -4,6 +4,6 @@ namespace Business.Abstract
 {
     public interface IVacancyService
     {
-        List<Vacancy> GetAll();
+        List<Vacancy> GetWithCity();
     }
 }
