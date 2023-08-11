@@ -1,39 +1,51 @@
 ﻿@model WebUI.Models.ViewModels.FilterViewModel
 
-<div class="col-lg-4 sidebar">
+<div class="col-lg-4 sidebar" style="border-radius:15px">
     <div class="single-slidebar">
-        <input type="text" class="form-control" placeholder="Açar söz" />
-        <br />
-        <h5>Şəhər</h5>
-        <select class="form-control">
-            @foreach (var item in Model.Cities)
-            {
-                <option class="form-control" href="category.html">@item.Name</option>
-            }
-        </select>
-        <br />
-        <h5>Kateqoriya</h5>
-        <select class="form-control">
-            @foreach (var item in Model.Cateories)
-            {
-                <option class="form-control" href="category.html">@item.Name</option>
-            }
-        </select>
-        <br />
-        <h5>İş təcrübəsi</h5>
-        <select class="form-control">
-            <option class="form-control" href="category.html">1 ildən az</option>
-            <option class="form-control" href="category.html">1 ildən 3 ilə qədər</option>
-        </select>
-        <br />
-        <h5>Təhsil</h5>
-        <select class="form-control">
-            <option class="form-control" href="category.html">Orta</option>
-            <option class="form-control" href="category.html">Natamam ali</option>
-            <option class="form-control" href="category.html">Ali</option>
-        </select>
-        <br />
-        <button class="genric-btn success circle form-control">Axtar</button>
+        <form method="post" asp-controller="vacancy" asp-action="search">
+            <input type="text" class="form-control" placeholder="Açar söz" style="border-radius:15px" name="search" />
+            <br />
+            <h6>Şəhər</h6>
+            <select class="form-control" style="border-radius:15px" name="cityId">
+                <option class="form-control" href="category.html">Vacib deyil</option>
+                @foreach (var item in Model.Cities)
+                {
+                    <option value="@item.Id" class="form-control" href="category.html">@item.Name</option>
+                }
+            </select>
+            <br />
+            <h6>Kateqoriya</h6>
+
+            <select class="form-control" style="border-radius:15px" name="categoryId">
+                <option class="form-control" href="category.html">Vacib deyil</option>
+                @foreach (var item in Model.Categories)
+                {
+                    <option value="@item.Id" class="form-control" href="category.html">@item.Name</option>
+                }
+            </select>
+            <br />
+            <h6>İş təcrübəsi</h6>
+            <select class="form-control" style="border-radius:15px" name="experienceId">
+                <option class="form-control" href="category.html">Vacib deyil</option>
+                @foreach (var item in Model.Experiences)
+                {
+                    <option value="@item.Id" class="form-control" href="category.html">@item.Name</option>
+                }
+            </select>
+            <br />
+            <h6>Təhsil</h6>
+            <select class="form-control" style="border-radius:15px" name="educationId">
+                <option class="form-control" href="category.html">Vacib deyil</option>
+                @foreach (var item in Model.Educations)
+                {
+                    <option value="@item.Id" class="form-control" href="category.html">@item.Name</option>
+                }
+            </select>
+            <br />
+            <button href="/vacancy/search?city=city" class="genric-btn success circle form-control">Axtar</button>
+        </form>
+
+
     </div>
 
 </div>

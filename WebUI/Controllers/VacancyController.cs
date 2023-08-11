@@ -22,5 +22,19 @@ namespace WebUI.Controllers
 
             return View(vacancies);
         }
+
+        public IActionResult Search(int cityId, int categoryId, int educationId, int experienceId, string search)
+        {
+            var vacancies = vacancyService.Filter(cityId, categoryId, educationId, experienceId, search);
+
+            return View(vacancies);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var vacancy = vacancyService.Details(id);
+
+            return View(vacancy);
+        }
     }
 }

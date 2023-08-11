@@ -1,0 +1,50 @@
+﻿@model Vacancy
+<!-- Start post Area -->
+<section class="post-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center d-flex">
+            <div class="col-lg-8 post-list">
+                <div class="single-post d-flex flex-row">
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <h4>@Model.Position</h4>
+                                <h5>@Model.Company</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-post job-experience">
+                    <h4 class="single-title">İş barədə məlumat</h4>
+                    <p style="white-space: pre-line">
+                        @Model.JobInformation
+                    </p>
+                </div>
+                <div class="single-post job-experience">
+                    <h4 class="single-title">Namizədə tələblər</h4>
+
+                    <p style="white-space: pre-line">
+                        @Model.Requirements
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-lg-4 sidebar">
+                <div class="single-slidebar">
+                    <h4>İş haqqında</h4>
+                    <ul class="cat-list">
+                        <li><b>Şəhər :</b> @Model.City.Name</li>
+                        <li><b>Kateqoriya :</b> @Model.Category.Name</li>
+                        <li><b>Yaş :</b> @Model.Age</li>
+                        <li><b>İş təcrübəsi :</b> @Model.Experience.Name</li>
+                        <li><b>Elanın tarixi :</b> @Model.CreateDate.ToString("MM/dd/yyyy")</li>
+                        <li><b>Bitmə tarixi :</b> @Model.EndDate.ToString("MM/dd/yyyy")</li>
+                        <li><b>Telefon :</b> @Model.PhoneNumber</li>
+                        <li><b>Email : </b><a href="mailto:@Model.Email">murad@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End post Area -->

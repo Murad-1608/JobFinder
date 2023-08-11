@@ -13,11 +13,14 @@ namespace Entity.Concrete
         public string PhoneNumber { get; set; }
         public string Position { get; set; }
         public string Company { get; set; }
+        public string Age { get; set; }
         public string Salary { get; set; }
         public string Requirements { get; set; }
         public string JobInformation { get; set; }
         public bool IsActive { get; set; }
         public bool IsPremium { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         public Category Category { get; set; }
         public City City { get; set; }

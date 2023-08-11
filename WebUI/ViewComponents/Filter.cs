@@ -8,17 +8,23 @@ namespace WebUI.ViewComponents
     {
         private readonly ICategoryService categoryService;
         private readonly ICityService cityService;
-        public Filter(ICategoryService categoryService, ICityService cityService)
+        private readonly IEducationService educationService;
+        private readonly IExperienceService experienceService;
+        public Filter(ICategoryService categoryService, ICityService cityService, IEducationService educationService, IExperienceService experienceService)
         {
             this.categoryService = categoryService;
             this.cityService = cityService;
+            this.educationService = educationService;
+            this.experienceService = experienceService;
         }
 
         public IViewComponentResult Invoke()
         {
             FilterViewModel viewModel = new FilterViewModel();
 
-            viewModel.Cateories = categoryService.GetAll();
+            viewModel.Categories = categoryService.GetAll();
+            viewModel.Educations = educationService.GetAll();
+            viewModel.Experiences = experienceService.GetAll();
             viewModel.Cities = cityService.GetAll();
 
             return View(viewModel);

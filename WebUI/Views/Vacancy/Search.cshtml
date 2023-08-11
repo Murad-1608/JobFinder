@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Entity.Concrete.Vacancy>
+<!-- Start post Area -->
+<section class="post-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center d-flex">
+            <div class="col-lg-8 post-list">
+                @if (Model.Count == 0)
+                {
+                    <h4>Heç bir iş elanı tapılmadı.</h4>
+                }
+                else
+                {
+                    @foreach (var item in Model)
+                    {
+                        <div class="single-post d-flex flex-row">
+                            <div class="details">
+                                <div class="title d-flex flex-row justify-content-between">
+                                    <div class="titles">
+                                        <a href="single.html"><h4>@item.Position</h4></a>
+                                        <h6>@item.Company</h6>
+                                    </div>
+                                    <ul class="btns">
+                                        <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+                                        <li><a href="#">Apply</a></li>
+                                    </ul>
+                                </div>
+                                <p style="white-space: pre-line">
+                                    @item.Requirements.Substring(0, 250) ...
+                                </p>
+                                <p class="address"><span class="lnr lnr-map"></span> @item.City.Name</p>
+                                <p class="address"><span class="lnr lnr-database"></span> @item.Salary</p>
+
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            @await Component.InvokeAsync("Filter")
+
+        </div>
+    </div>
+</section>
+<!-- End post Area -->
+<!-- Start callto-action Area -->
+<section class="callto-action-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content col-lg-9">
+                <div class="title text-center">
+                    <h1 class="mb-10 text-white">Join us today without any hesitation</h1>
+                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                    <a class="primary-btn" href="#">I am a Candidate</a>
+                    <a class="primary-btn" href="#">Request Free Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End calto-action Area -->
