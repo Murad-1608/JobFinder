@@ -18,6 +18,18 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<CityManager>().As<ICityService>().SingleInstance();
             builder.RegisterType<EfCityDal>().As<ICityDal>().SingleInstance();
+
+            builder.RegisterType<EducationManager>().As<IEducationService>().SingleInstance();
+            builder.RegisterType<EfEducationDal>().As<IEducationDal>().SingleInstance();
+
+            builder.RegisterType<ExperienceManager>().As<IExperienceService>().SingleInstance();
+            builder.RegisterType<EfExperinceDal>().As<IExperienceDal>().SingleInstance();
+
+            builder.RegisterType<BlogManager>().As<IBlogService>().SingleInstance();
+            builder.RegisterType<EfBlogDal>().As<IBlogDal>().SingleInstance();
+
+            builder.RegisterType<ContactManager>().As<IContactService>().SingleInstance();
+            builder.RegisterType<EfContactDal>().As<IContactDal>().SingleInstance();
         }
     }
 }
