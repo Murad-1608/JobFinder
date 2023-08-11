@@ -1,14 +1,27 @@
 ﻿using Business.Abstract;
+using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using WebUI.Constants;
+using WebUI.Models.ViewModels;
 
 namespace WebUI.Controllers
 {
     public class VacancyController : Controller
     {
+        private readonly ICategoryService categoryService;
         private readonly IVacancyService vacancyService;
-        public VacancyController(IVacancyService vacancyService)
+        private readonly ICityService cityService;
+        private readonly IEducationService educationService;
+        private readonly IExperienceService experienceService;
+        public VacancyController(ICategoryService categoryService, ICityService cityService,
+                                 IEducationService educationService,
+                                 IExperienceService experienceService, IVacancyService vacancyService)
         {
+            this.categoryService = categoryService;
+            this.cityService = cityService;
+            this.educationService = educationService;
+            this.experienceService = experienceService;
             this.vacancyService = vacancyService;
         }
 
@@ -35,6 +48,59 @@ namespace WebUI.Controllers
             var vacancy = vacancyService.Details(id);
 
             return View(vacancy);
+        }
+
+        public IActionResult Add()
+        {
+            Header.Name = "Yeni elan";
+
+            VacancyViewModel viewModel = ViewModel();
+
+            return View(viewModel);
+        }
+
+        private VacancyViewModel ViewModel()
+        {
+            List<SelectListItem> categories = (from i in categoryService.GetAll()
+                                               select new SelectListItem
+                                               {
+                                                   Text = i.Name,
+                                                   Value = i.Id.ToString()
+                                               }).ToList();
+
+            List<SelectListItem> experiences = (from i in experienceService.GetAll()
+                                                select new SelectListItem
+                                                {
+                                                    Text = i.Name,
+                                                    Value = i.Id.ToString()
+                                                }).ToList();
+
+
+            List<SelectListItem> city = (from i in cityService.GetAll()
+                                         select new SelectListItem
+                                         {
+                                             Text = i.Name,
+                                             Value = i.Id.ToString()
+                                         }).ToList();
+
+            List<SelectListItem> education = (from i in educationService.GetAll()
+                                              select new SelectListItem
+                                              {
+                                                  Text = i.Name,
+                                                  Value = i.Id.ToString()
+                                              }).ToList();
+
+
+
+            VacancyViewModel viewmodel = new()
+            {
+                Categories = categories,
+                Experiences = experiences,
+                Cities = city,
+                Educations = education,
+            };
+
+            return viewmodel;
         }
     }
 }

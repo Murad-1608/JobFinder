@@ -1,0 +1,90 @@
+﻿@using WebUI.Models.ViewModels
+
+@model VacancyViewModel
+<!-- Start post Area -->
+<section class="post-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center d-flex">
+            <div class="col-lg-8 post-list">
+                <form class="form-area " id="myForm" action="mail.php" method="post" class="contact-form text-right">
+                    <div class="row">
+                        <div class="col-lg-12 form-group">
+                            <label for="" asp-for="AddVacancyModel.Position">Vəzifə</label>
+                            <input asp-for="AddVacancyModel.Position" class="common-input mb-20 form-control" required="" type="text">
+                            <span asp-validation-for="AddVacancyModel.Position"></span>
+
+                            <label>Kateqoriya</label>
+                            @Html.DropDownListFor(x => x.AddVacancyModel.CategoryId, new SelectList(Model.Categories, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
+                            @Html.ValidationMessageFor(x => x.AddVacancyModel.CategoryId, "", new { @class = "text-danger" })
+
+                            <label for="" asp-for="AddVacancyModel.Company">Şirkət</label>
+                            <input asp-for="AddVacancyModel.Company" class="common-input mb-20 form-control" required="" type="text">
+                            <span asp-validation-for="AddVacancyModel.Company"></span>
+
+                            <label for="" asp-for="AddVacancyModel.Age">Yaş</label>
+                            <input asp-for="AddVacancyModel.Age" placeholder="Məs. 22-25" class="common-input mb-20 form-control" required="" type="text">
+                            <span asp-validation-for="AddVacancyModel.Age"></span>
+
+                            <label for="" asp-for="AddVacancyModel.Age">Maaş</label>
+                            <input asp-for="AddVacancyModel.Age" placeholder="Məs. 1000-1500 AZN. Müsahibə əsasında olarsa müsahibə əsasında yazmağınız kifayet edir" class="common-input mb-20 form-control" required="" type="text">
+                            <span asp-validation-for="AddVacancyModel.Age"></span>
+
+                            <label>Təhsil</label>
+                            @Html.DropDownListFor(x => x.AddVacancyModel.EducationId, new SelectList(Model.Educations, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
+                            @Html.ValidationMessageFor(x => x.AddVacancyModel.EducationId, "", new { @class = "text-danger" })
+
+                            <label>Şəhər</label>
+                            @Html.DropDownListFor(x => x.AddVacancyModel.CityId, new SelectList(Model.Cities, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
+                            @Html.ValidationMessageFor(x => x.AddVacancyModel.CityId, "", new { @class = "text-danger" })
+
+                            <label>Təcrübə</label>
+                            @Html.DropDownListFor(x => x.AddVacancyModel.ExperienceId, new SelectList(Model.Experiences, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
+                            @Html.ValidationMessageFor(x => x.AddVacancyModel.ExperienceId, "", new { @class = "text-danger" })
+
+                            <label asp-for="AddVacancyModel.Age">Email</label>
+                            <input asp-for="AddVacancyModel.Email" placeholder="" class="common-input mb-20 form-control" required="" type="text">
+                            <span asp-validation-for="AddVacancyModel.Email"></span>
+
+                            <label asp-for="AddVacancyModel.PhoneNumber">Telefon</label>
+                            <input asp-for="AddVacancyModel.PhoneNumber" placeholder="" class="common-input mb-20 form-control" required="" type="text">
+                            <span asp-validation-for="AddVacancyModel.PhoneNumber"></span>
+
+                            <label asp-for="AddVacancyModel.EndDate">Bitmə tarixi</label>
+                            <input asp-for="AddVacancyModel.EndDate" placeholder="" class="common-input mb-20 form-control" required="" type="date">
+                            <span asp-validation-for="AddVacancyModel.EndDate"></span>
+
+                            <label asp-for="AddVacancyModel.JobInformation">İş haqqında məlumat</label>
+                            <textarea asp-for="AddVacancyModel.JobInformation" class="common-textarea mt-10 form-control"></textarea>
+                            <span asp-validation-for="AddVacancyModel.JobInformation"></span>
+
+                            <label asp-for="AddVacancyModel.Requirements">Tələblər</label>
+                            <textarea asp-for="AddVacancyModel.Requirements" class="common-textarea mt-10 form-control"></textarea>
+                            <span asp-validation-for="AddVacancyModel.Requirements"></span>
+
+                            <button class="primary-btn mt-20 text-white" style="text-align:center;">Send Message</button>
+                            <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="col-lg-4 sidebar">
+                <div class="single-slidebar">
+                    <h4>Qaydalar</h4>
+                    <p>
+                        1) Bir vakansiyanın 30 gün müddətinə yerləşdirilməsi pulsuz həyata keçirilir.
+                    </p><br />
+                    <p>2) Vakansiya yalnız Azərbaycan daxilində olan işləri əhatə etməlidir.</p><br />
+                    <p>
+                        3) Vakansiya haqqında elanın ən qısa müddətdə dərc olunması üçün
+                        formanın doldurulmasına dair bütün təlimatlara ciddi riayət olunmalıdır.
+                        Səliqəsiz doldurulmuş formalar redaktəyə məruz qalacaq və dərhal dərc olunmayacaq.
+                    </p><br />
+                    <p> 4) Elan yerləşdirildikdə 1 gün ərzində moderatorlar vasitəsilə yoxlandıqdan sonra dərc ediləcəkdir.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End post Area -->
