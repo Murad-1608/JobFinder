@@ -12,7 +12,7 @@ namespace Business.Concrete
         {
             this.vacancyDal = vacancyDal;
         }
-        public List<Vacancy> GetAll() => vacancyDal.GetAll();
+        public List<Vacancy> GetWithCity() => vacancyDal.GetWithCity();
 
     }
 }

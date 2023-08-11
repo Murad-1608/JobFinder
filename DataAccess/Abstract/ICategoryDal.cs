@@ -3,7 +3,7 @@ using Entity.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface ICategoryService : IRepositoryBase<Category>
+    public interface ICategoryDal : IRepositoryBase<Category>
     {
     }
 }

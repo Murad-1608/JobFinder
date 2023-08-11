@@ -16,7 +16,9 @@ namespace WebUI.Controllers
         {
             Header.Name = "Elan";
 
-            var vacancies = vacancyService.GetAll();
+            var vacancies = vacancyService.GetWithCity();
+
+            vacancies.Reverse();
 
             return View(vacancies);
         }

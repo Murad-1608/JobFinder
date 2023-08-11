@@ -5,5 +5,6 @@ namespace DataAccess.Abstract
 {
     public interface IVacancyDal : IRepositoryBase<Vacancy>
     {
+        List<Vacancy> GetWithCity();
     }
 }
