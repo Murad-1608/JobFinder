@@ -13,6 +13,11 @@ namespace Business.Concrete
             this.vacancyDal = vacancyDal;
         }
 
+        public void Add(Vacancy vacancy)
+        {
+            vacancyDal.Add(vacancy);
+        }
+
         public Vacancy Details(int id)
         {
             return vacancyDal.GetWithCityAndEducationAndCategoryAndExperience(x => x.Id == id).Last();

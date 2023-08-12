@@ -3,6 +3,7 @@ using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebUI.Constants;
+using WebUI.Models;
 using WebUI.Models.ViewModels;
 
 namespace WebUI.Controllers
@@ -54,12 +55,45 @@ namespace WebUI.Controllers
         {
             Header.Name = "Yeni elan";
 
-            VacancyViewModel viewModel = ViewModel();
+            VacancyViewModel viewModel = ViewModel(new AddVacancyModel());
 
             return View(viewModel);
         }
 
-        private VacancyViewModel ViewModel()
+        [HttpPost]
+        public IActionResult Add(VacancyViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Vacancy vacancy = new()
+                {
+                    CategoryId = viewModel.AddVacancyModel.CategoryId,
+                    CityId = viewModel.AddVacancyModel.CityId,
+                    ExperienceId = viewModel.AddVacancyModel.ExperienceId,
+                    Email = viewModel.AddVacancyModel.Email,
+                    PhoneNumber = viewModel.AddVacancyModel.PhoneNumber,
+                    Position = viewModel.AddVacancyModel.Position,
+                    Company = viewModel.AddVacancyModel.Company,
+                    Age = viewModel.AddVacancyModel.Age,
+                    Salary = viewModel.AddVacancyModel.Salary,
+                    Requirements = viewModel.AddVacancyModel.Requirements,
+                    JobInformation = viewModel.AddVacancyModel.JobInformation,
+                    IsActive = true,
+                    IsPremium = false,
+                    CreateDate = DateTime.Now,
+                    EndDate = viewModel.AddVacancyModel.EndDate,
+                };
+                vacancyService.Add(vacancy);
+                return RedirectToAction("index");
+            }
+            viewModel = ViewModel(viewModel.AddVacancyModel);
+
+            return View(viewModel);
+        }
+
+
+
+        private VacancyViewModel ViewModel(AddVacancyModel model)
         {
             List<SelectListItem> categories = (from i in categoryService.GetAll()
                                                select new SelectListItem
@@ -98,6 +132,7 @@ namespace WebUI.Controllers
                 Experiences = experiences,
                 Cities = city,
                 Educations = education,
+                AddVacancyModel = model
             };
 
             return viewmodel;
