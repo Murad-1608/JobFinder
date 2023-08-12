@@ -1,0 +1,46 @@
+﻿@model List<Contact>
+
+<hr class="my-5" />
+
+<!-- Bordered Table -->
+<div class="card">
+    <div class="card-header" style="display:flex;justify-content:space-between">
+        <h2>
+            Əlaqə
+        </h2>
+        
+    </div>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Mətnin başlığı</th>
+                         <th>Yaranma vaxtı</th>
+                        <th style="text-align:right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Contact item in Model)
+                    {
+                        <tr>
+                            <td>@item.Email</td>
+                            <td>@item.Subject</td>
+                            <td>@item.CreateDate.ToShortDateString()</td>
+                            <td>
+                                <div style="display:flex;justify-content:flex-end">
+                                    <a asp-action="Detail" asp-route-id=@item.Id class="btn btn-info rounded-pill text-white" style="margin-right:10px">Ətraflı</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--/ Bordered Table -->
+
+<hr class="my-5" />
+
