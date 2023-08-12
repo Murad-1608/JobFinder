@@ -70,6 +70,7 @@ namespace WebUI.Controllers
                     CategoryId = viewModel.AddVacancyModel.CategoryId,
                     CityId = viewModel.AddVacancyModel.CityId,
                     ExperienceId = viewModel.AddVacancyModel.ExperienceId,
+                    EducationId = viewModel.AddVacancyModel.EducationId,
                     Email = viewModel.AddVacancyModel.Email,
                     PhoneNumber = viewModel.AddVacancyModel.PhoneNumber,
                     Position = viewModel.AddVacancyModel.Position,
