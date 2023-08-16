@@ -1,0 +1,80 @@
+﻿@model List<Blog>
+
+<hr class="my-5" />
+
+<!-- Bordered Table -->
+<div class="card">
+    <div class="card-header" style="display:flex;justify-content:space-between">
+        <h2>
+            Bloq
+        </h2>
+        <div>
+            <a asp-action="Create" class="btn btn-primary rounded-pill text-white" style="margin-right:10px">Yarat</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Şəkil</th>
+                        <th>Başlıq</th>
+                        <th>Yaranma tarixi</th>
+                        @* <th>Status</th>*@
+                        <th style="text-align:right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Blog item in Model)
+                    {
+                        <tr>
+                          <td>
+                              <img src="">
+                          </td>
+
+                          <td>@item.Title</td>
+
+                          <td>@item.CreateDate.ToShortDateString()</td>
+
+                            <td>
+                                <div style="display:flex;justify-content:flex-end">
+                                     <a class="btn btn-warning rounded-pill text-white" style="margin-right:10px">Ətraflı bax</a>
+                                     <a asp-action="Update" asp-route-id=@item.Id class="btn btn-info rounded-pill text-white" style="margin-right:10px">Yenilə</a>
+@*                                   <a class="btn btn-danger rounded-pill text-white" style="margin-right:10px">Delete</a>
+*@                                
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" asp-route-page="page" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+
+                @for (int i = 1; i <= ViewBag.PageCount; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")"><a class="page-link" asp-route-page="@i">@i</a></li>
+                }
+
+                <li class="page-item">
+                    <a class="page-link" asp-route-page="@ViewBag.PageCount" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!--/ Bordered Table -->
+
+<hr class="my-5" />
+
+
