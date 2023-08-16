@@ -79,7 +79,7 @@ namespace WebUI.Controllers
                     Salary = viewModel.AddVacancyModel.Salary,
                     Requirements = viewModel.AddVacancyModel.Requirements,
                     JobInformation = viewModel.AddVacancyModel.JobInformation,
-                    IsActive = true,
+                    IsActive = false,
                     IsPremium = false,
                     CreateDate = DateTime.Now,
                     EndDate = viewModel.AddVacancyModel.EndDate,

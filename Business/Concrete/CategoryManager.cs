@@ -12,6 +12,18 @@ namespace Business.Concrete
             this.categoryDal = categoryDal;
         }
 
+        public void Add(Category category)
+        {
+            categoryDal.Add(category);
+        }
+
+        public void Delete(int id)
+        {
+            var category = categoryDal.Get(x => x.Id == id);
+
+            categoryDal.Delete(category);
+        }
+
         public List<Category> GetAll() => categoryDal.GetAll();
     }
 }
