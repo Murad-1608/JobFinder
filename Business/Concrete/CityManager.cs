@@ -12,6 +12,18 @@ namespace Business.Concrete
             this.cityDal = cityDal;
         }
 
+        public void Add(City city)
+        {
+            cityDal.Add(city);
+        }
+
+        public void Delete(int id)
+        {
+            var city = cityDal.Get(x => x.Id == id);
+
+            cityDal.Delete(city);
+        }
+
         public List<City> GetAll() => cityDal.GetAll();
     }
 }

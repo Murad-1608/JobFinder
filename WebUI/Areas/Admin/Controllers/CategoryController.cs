@@ -17,7 +17,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var categories = categoryService.GetAll().ToPagedList(1, 10);
+            var categories = categoryService.GetAll().ToPagedList(1, 20);
             return View(categories);
         }
 
