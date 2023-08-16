@@ -15,6 +15,8 @@ namespace WebUI.Controllers
 		#region Index
 		public IActionResult Index()
 		{
+			Constants.Header.Name = "Bloqlar";
+
 			List<Blog> blogs = _blogService.GetAll();
 			return View(blogs);
 		}
