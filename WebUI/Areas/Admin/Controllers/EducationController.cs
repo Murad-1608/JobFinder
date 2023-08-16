@@ -35,11 +35,19 @@ namespace WebUI.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				Education education = new Education
+                bool isExist = _educationService.GetAll().Any(x => x.Name == model.Education);
+				if (isExist)
+				{
+					ModelState.AddModelError("Education", "Bu adda təhsil növü zatən mövcuddur");
+					return View();
+				}
+
+                Education education = new Education
 				{
 					Name = model.Education
 				};
-				_educationService.Add(education);
+
+                _educationService.Add(education);
 				return RedirectToAction("Index");
 			}
 			return View();

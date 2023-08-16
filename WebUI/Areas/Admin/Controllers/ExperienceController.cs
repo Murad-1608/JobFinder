@@ -35,6 +35,13 @@ namespace WebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                bool isExist = _experienceService.GetAll().Any(x => x.Name == model.Name);
+                if (isExist)
+                {
+                    ModelState.AddModelError("Name", "Bu adda təcrübə növü zatən mövcuddur");
+                    return View();
+                }
+
                 Experience experience = new Experience
                 {
                     Name = model.Name

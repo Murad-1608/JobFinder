@@ -13,11 +13,24 @@ namespace WebUI.Controllers
         }
 
 		#region Index
-		public IActionResult Index()
+		public IActionResult Index(string search,int page=1)
 		{
 			Constants.Header.Name = "Bloqlar";
 
-			List<Blog> blogs = _blogService.GetAll();
+            List<Blog> blogs = new List<Blog>();
+
+			if (!string.IsNullOrEmpty(search))
+			{
+				var blg = from x in _blogService.GetAll() select x;
+				blogs = _blogService.GetAll().Where(x => x.Title.Contains(search)).ToList();
+				return View(blogs);
+			}
+
+            decimal take = 3;
+			ViewBag.PageCount = Math.Ceiling((decimal)(_blogService.GetAll().Count() / take));
+			ViewBag.CurrentPage = page;
+
+			blogs =_blogService.GetAll().OrderByDescending(x => x.Id).Skip((page - 1)*(int)take).Take((int)take).ToList();
 			return View(blogs);
 		}
 		#endregion

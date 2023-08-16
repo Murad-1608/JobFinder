@@ -8,13 +8,13 @@
 				<form class="form-area" method="post" class="contact-form text-right">
 					<div class="row">
 						<div class="col-lg-12 form-group">
-							<input asp-for="FullName" placeholder="Adınız və Soyadınız" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adınız və Soyadınız'" class="common-input mb-2 form-control">
+							<input asp-for="FullName" placeholder="Adınız və Soyadınız" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adınız və Soyadınız'" class="common-input mb-4 form-control">
 							<span asp-validation-for="FullName" class="text-danger"></span>
 
-							<input asp-for="Email" placeholder="Elektron poçt ünvanınız" pattern="[A-Za-z0-9._%+-]+@@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Elektron poçt ünvanınız'" class="common-input mb-2 form-control">
+							<input asp-for="Email" placeholder="Elektron poçt ünvanınız" pattern="[A-Za-z0-9._%+-]+@@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Elektron poçt ünvanınız'" class="common-input mb-4 form-control">
 							<span asp-validation-for="Email" class="text-danger"></span>
 
-							<input asp-for="Subject" placeholder="Mətnin başlığı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mətnin başlığı'" class="common-input mb-22 form-control">
+							<input asp-for="Subject" placeholder="Mətnin başlığı" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mətnin başlığı'" class="common-input mb-4 form-control">
 							<span asp-validation-for="Subject" class="text-danger"></span>
 
 							<textarea asp-for="Message" class="common-textarea mt-10 form-control" placeholder="İsmarıcınız" onfocus="this.placeholder = ''" onblur="this.placeholder = 'İsmarıcınız'"></textarea>
