@@ -18,6 +18,11 @@ namespace Business.Concrete
             vacancyDal.Add(vacancy);
         }
 
+        public void Delete(Vacancy vacancy)
+        {
+            vacancyDal.Delete(vacancy);
+        }
+
         public Vacancy Details(int id)
         {
             return vacancyDal.GetWithCityAndEducationAndCategoryAndExperience(x => x.Id == id).Last();
@@ -34,6 +39,11 @@ namespace Business.Concrete
                                                    x.Requirements.Contains(search)));
 
             return vacancies;
+        }
+
+        public Vacancy GetById(int id)
+        {
+            return vacancyDal.Get(x => x.Id == id);
         }
 
         public List<Vacancy> GetWithCity() => vacancyDal.GetWithCity();

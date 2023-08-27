@@ -1,0 +1,63 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IPagedList<Vacancy>
+
+<hr class="my-5" />
+
+<!-- Bordered Table -->
+<div class="card">
+    <div class="card-header" style="display:flex;justify-content:space-between">
+        <h2>
+            Elan
+        </h2>
+        <div>
+            <a asp-action="Create" class="btn btn-primary rounded-pill text-white" style="margin-right:10px">Əlavə et</a>
+            <a asp-action="Create" class="btn btn-primary rounded-pill text-white" style="margin-right:10px">Yeni elanlar</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Vəzifə</th>
+                        <th>Şirkət</th>
+                        <th>Şəhər</th>
+                        @* <th>Status</th>*@
+                        <th style="text-align:right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.Position</strong>
+                            </td>
+                            <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.Company</strong>
+                            </td>
+                            <td>
+                                <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.City.Name</strong>
+                            </td>
+                            <td>
+                                <div style="display:flex;justify-content:flex-end">
+                                    <a class="btn btn-warning rounded-pill text-white" style="margin-right:10px">Ətraflı</a>
+                                    <a asp-action="Update" asp-route-id=@item.Id class="btn btn-info rounded-pill text-white" style="margin-right:10px">Yenilə</a>
+                                    <a asp-controller="vacancy" asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger rounded-pill text-white" style="margin-right:10px">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--/ Bordered Table -->
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+
+<hr class="my-5" />
