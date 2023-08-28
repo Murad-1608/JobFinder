@@ -1,7 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model List<Entity.Concrete.Vacancy>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IPagedList<Vacancy>
+
 <!-- Start post Area -->
 <section class="post-area section-gap">
     <div class="container">
@@ -17,21 +21,19 @@
                                     <a asp-controller="vacancy" asp-action="details" asp-route-id="@item.Id"><h4>@item.Position</h4></a>
                                     <h6>@item.Company</h6>
                                 </div>
-                                <ul class="btns">
-                                    <li><a asp-controller="vacancy" asp-action="details" asp-route-id="@item.Id"><span class="lnr lnr-heart"></span></a></li>
-                                    <li><a asp-controller="vacancy" asp-action="details" asp-route-id="@item.Id">Apply</a></li>
-                                </ul>
+                                @*<ul class="btns">
+                                        <li><a asp-controller="vacancy" asp-action="details" asp-route-id="@item.Id"><span class="lnr lnr-heart"></span></a></li>
+                                        <li><a asp-controller="vacancy" asp-action="details" asp-route-id="@item.Id">Apply</a></li>
+                                    </ul>*@
                             </div>
                             <hr>
-                            <p style="white-space: pre-line">
-                                @item.Requirements.Substring(0, 250) ...
-                            </p>
                             <p class="address"><span class="lnr lnr-map"></span> @item.City.Name</p>
                             <p class="address"><span class="lnr lnr-database"></span> @item.Salary</p>
 
                         </div>
                     </div>
                 }
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
             </div>
             @await Component.InvokeAsync("Filter")
 

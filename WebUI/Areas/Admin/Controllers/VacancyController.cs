@@ -49,7 +49,11 @@ namespace WebUI.Areas.Admin.Controllers
 
             vacancyService.Delete(value);
 
-            return RedirectToAction("index");
+            if (value.IsActive == true)
+            {
+                return RedirectToAction("index");
+            }
+            return RedirectToAction("newvacancy");
         }
 
         [HttpGet]
@@ -97,8 +101,9 @@ namespace WebUI.Areas.Admin.Controllers
         {
             var vacancy = vacancyService.Details(id: id);
 
-            VacancyModel viewModel = new VacancyModel()
+            VacancyModel model = new VacancyModel()
             {
+                Id = id,
                 Age = vacancy.Age,
                 Salary = vacancy.Salary,
                 Company = vacancy.Company,
@@ -113,8 +118,37 @@ namespace WebUI.Areas.Admin.Controllers
                 PhoneNumber = vacancy.PhoneNumber,
                 Position = vacancy.Position
             };
-            return View(viewModel);
+            return View(model);
+        }
 
+        [HttpPost]
+        public IActionResult Update(VacancyModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Vacancy entity = new Vacancy()
+                {
+                    Id = Convert.ToInt32(model.Id),
+                    Age = model.Age,
+                    Salary = model.Salary,
+                    Company = model.Company,
+                    Requirements = model.Requirements,
+                    JobInformation = model.JobInformation,
+                    Email = model.Email,
+                    CategoryId = model.CategoryId,
+                    CityId = model.CityId,
+                    EducationId = model.EducationId,
+                    EndDate = model.EndDate,
+                    ExperienceId = model.ExperienceId,
+                    PhoneNumber = model.PhoneNumber,
+                    Position = model.Position,
+                    IsActive = true
+                };
+                vacancyService.Update(entity);
+
+                return RedirectToAction("index");
+            }
+            return View(model);
         }
 
         private VacancyViewModel ViewModel(VacancyModel model)

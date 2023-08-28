@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using WebUI.Constants;
 using WebUI.Models;
 using WebUI.Models.ViewModels;
+using X.PagedList;
 
 namespace WebUI.Controllers
 {
@@ -35,14 +36,19 @@ namespace WebUI.Controllers
 
             vacancies.Reverse();
 
-            return View(vacancies);
+            var vacancyList = vacancies.ToPagedList(1, 3);
+
+            return View(vacancyList);
         }
 
         public IActionResult Search(int cityId, int categoryId, int educationId, int experienceId, string search)
         {
             var vacancies = vacancyService.Filter(cityId, categoryId, educationId, experienceId, search);
+            vacancies.Reverse();
 
-            return View(vacancies);
+            var vacancyList = vacancies.ToPagedList(1, 3);
+
+            return View(vacancyList);
         }
 
         public IActionResult Details(int id)

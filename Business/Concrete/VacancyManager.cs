@@ -49,5 +49,9 @@ namespace Business.Concrete
         public List<Vacancy> GetWithCityIsActive() => vacancyDal.GetWithCity(x => x.IsActive == true);
         public List<Vacancy> GetWithCityIsFalse() => vacancyDal.GetWithCity(x => x.IsActive == false);
 
+        public void Update(Vacancy vacancy)
+        {
+            vacancyDal.Update(vacancy);
+        }
     }
 }

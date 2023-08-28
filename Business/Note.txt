@@ -3,3 +3,9 @@ Behruz : Education, Experience, Contact, Blog
 
 
 Swal problem in client site
+
+
+1)Send email new vacancy panel
+2)Identity admin
+3)Succes message when client add vacancy
+4)PagedList

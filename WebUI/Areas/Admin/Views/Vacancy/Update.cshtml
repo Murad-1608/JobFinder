@@ -5,13 +5,14 @@
 <h3>Yeni elan</h3>
 <br />
 <div class="card-body">
-    <form class="forms-sample" method="post" asp-controller="vacancy" asp-action="add">
+    <form class="forms-sample" method="post" asp-controller="vacancy" asp-action="update">
         <div class="row">
             <div class="col-lg-12 form-group">
                 <input type="hidden" asp-for="ExperienceId" />
                 <input type="hidden" asp-for="CategoryId" />
                 <input type="hidden" asp-for="EducationId" />
                 <input type="hidden" asp-for="CityId" />
+                <input type="hidden" asp-for="Id" />
 
                 <label for="" asp-for="Position">Vəzifə</label>
                 <input asp-for="Position" class="common-input mb-20 form-control" required="" type="text">
@@ -50,8 +51,10 @@
                 <span asp-validation-for="Requirements"></span>
                 <br />
 
-                <button type="submit" class="btn btn-info">Təstiq et</button>
+                <button type="submit" class="btn btn-info">Paylaş</button>
+                <a asp-controller="vacancy" asp-action="delete" asp-route-id="@Model.Id" class="btn btn-danger">Sil</a>
                 <div class="mt-20 alert-msg" style="text-align: left;"></div>
+
                 <br />
             </div>
         </div>

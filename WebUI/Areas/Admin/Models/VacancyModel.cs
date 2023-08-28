@@ -4,6 +4,7 @@ namespace WebUI.Areas.Admin.Models
 {
     public class VacancyModel
     {
+        public int? Id { get; set; }
         public int CategoryId { get; set; }
         public int CityId { get; set; }
         public int ExperienceId { get; set; }

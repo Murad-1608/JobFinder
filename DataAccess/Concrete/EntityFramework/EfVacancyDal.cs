@@ -29,7 +29,7 @@ namespace DataAccess.Concrete.EntityFramework
                     Include(x => x.Category).
                     Include(x => x.Experience).
                     Include(x => x.Education).ToList() :
-                                        context.Vacancies.Where(filter).Where(x => x.IsActive == true).
+                                        context.Vacancies.Where(filter).
                                         Include(x => x.City).
                                         Include(x => x.City).
                                         Include(x => x.Category).Include(x => x.Experience).
