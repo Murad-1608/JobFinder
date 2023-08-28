@@ -1,6 +1,9 @@
 ﻿@using WebUI.Models.ViewModels
 
 @model VacancyViewModel
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- Start post Area -->
 <section class="post-area section-gap">
     <div class="container">
@@ -90,6 +93,7 @@
 <!-- End post Area -->
 
 <script>
- const today = new Date().toISOString().substr(0, 10);
- document.getElementById("todayDate").value = today;
+    const today = new Date().toISOString().substr(0, 10);
+    document.getElementById("todayDate").value = today;
 </script>
+

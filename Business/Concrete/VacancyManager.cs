@@ -46,7 +46,8 @@ namespace Business.Concrete
             return vacancyDal.Get(x => x.Id == id);
         }
 
-        public List<Vacancy> GetWithCity() => vacancyDal.GetWithCity();
+        public List<Vacancy> GetWithCityIsActive() => vacancyDal.GetWithCity(x => x.IsActive == true);
+        public List<Vacancy> GetWithCityIsFalse() => vacancyDal.GetWithCity(x => x.IsActive == false);
 
     }
 }

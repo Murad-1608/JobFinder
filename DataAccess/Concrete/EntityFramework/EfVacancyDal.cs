@@ -13,8 +13,8 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (var context = new AppDbContext())
             {
-                return filter == null ? context.Vacancies.Where(x => x.IsActive == true).Include(x => x.City).ToList() :
-                                        context.Vacancies.Where(filter).Where(x => x.IsActive == true).Include(x => x.City).ToList();
+                return filter == null ? context.Vacancies.Include(x => x.City).ToList() :
+                                        context.Vacancies.Where(filter).Include(x => x.City).ToList();
 
 
             }

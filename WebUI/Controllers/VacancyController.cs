@@ -26,11 +26,12 @@ namespace WebUI.Controllers
             this.vacancyService = vacancyService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(bool success = false)
         {
             Header.Name = "Elan";
+            ViewBag.Success = success;
 
-            var vacancies = vacancyService.GetWithCity();
+            var vacancies = vacancyService.GetWithCityIsActive();
 
             vacancies.Reverse();
 
@@ -85,10 +86,10 @@ namespace WebUI.Controllers
                     EndDate = viewModel.AddVacancyModel.EndDate,
                 };
                 vacancyService.Add(vacancy);
-                return RedirectToAction("index");
+                ViewBag.Success = true;
+                return RedirectToAction("Index", new { success = true });
             }
             viewModel = ViewModel(viewModel.AddVacancyModel);
-
             return View(viewModel);
         }
 
