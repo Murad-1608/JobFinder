@@ -2,7 +2,7 @@
 
 namespace WebUI.Areas.Admin.Models
 {
-    public class AddVacancyModel
+    public class VacancyModel
     {
         public int CategoryId { get; set; }
         public int CityId { get; set; }

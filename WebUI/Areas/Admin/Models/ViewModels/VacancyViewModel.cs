@@ -4,7 +4,7 @@ namespace WebUI.Areas.Admin.Models.ViewModels
 {
     public class VacancyViewModel
     {
-        public AddVacancyModel AddVacancyModel { get; set; }
+        public VacancyModel VacancyModel { get; set; }
         public List<SelectListItem>? Cities { get; set; }
         public List<SelectListItem>? Categories { get; set; }
         public List<SelectListItem>? Educations { get; set; }

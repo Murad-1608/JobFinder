@@ -8,57 +8,57 @@
     <form class="forms-sample" method="post" asp-controller="vacancy" asp-action="add">
         <div class="row">
             <div class="col-lg-12 form-group">
-                <label for="" asp-for="AddVacancyModel.Position">Vəzifə</label>
-                <input asp-for="AddVacancyModel.Position" class="common-input mb-20 form-control" required="" type="text">
-                <span asp-validation-for="AddVacancyModel.Position"></span>
+                <label for="" asp-for="VacancyModel.Position">Vəzifə</label>
+                <input asp-for="VacancyModel.Position" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="VacancyModel.Position"></span>
 
                 <label>Kateqoriya</label>
-                @Html.DropDownListFor(x => x.AddVacancyModel.CategoryId, new SelectList(Model.Categories, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
-                @Html.ValidationMessageFor(x => x.AddVacancyModel.CategoryId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(x => x.VacancyModel.CategoryId, new SelectList(Model.Categories, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
+                @Html.ValidationMessageFor(x => x.VacancyModel.CategoryId, "", new { @class = "text-danger" })
 
-                <label for="" asp-for="AddVacancyModel.Company">Şirkət</label>
-                <input asp-for="AddVacancyModel.Company" class="common-input mb-20 form-control" required="" type="text">
-                <span asp-validation-for="AddVacancyModel.Company"></span>
+                <label for="" asp-for="VacancyModel.Company">Şirkət</label>
+                <input asp-for="VacancyModel.Company" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="VacancyModel.Company"></span>
 
-                <label for="" asp-for="AddVacancyModel.Age">Yaş</label>
-                <input asp-for="AddVacancyModel.Age" placeholder="Məs. 22-25" class="common-input mb-20 form-control" required="" type="text">
-                <span asp-validation-for="AddVacancyModel.Age"></span>
+                <label for="" asp-for="VacancyModel.Age">Yaş</label>
+                <input asp-for="VacancyModel.Age" placeholder="Məs. 22-25" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="VacancyModel.Age"></span>
 
-                <label for="" asp-for="AddVacancyModel.Salary">Maaş</label>
-                <input asp-for="AddVacancyModel.Salary" placeholder="Məs. 1000-1500 AZN. Müsahibə əsasında olarsa müsahibə əsasında yazmağınız kifayet edir" class="common-input mb-20 form-control" required="" type="text">
-                <span asp-validation-for="AddVacancyModel.Salary"></span>
+                <label for="" asp-for="VacancyModel.Salary">Maaş</label>
+                <input asp-for="VacancyModel.Salary" placeholder="Məs. 1000-1500 AZN. Müsahibə əsasında olarsa müsahibə əsasında yazmağınız kifayet edir" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="VacancyModel.Salary"></span>
 
                 <label>Təhsil</label>
-                @Html.DropDownListFor(x => x.AddVacancyModel.EducationId, new SelectList(Model.Educations, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
-                @Html.ValidationMessageFor(x => x.AddVacancyModel.EducationId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(x => x.VacancyModel.EducationId, new SelectList(Model.Educations, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
+                @Html.ValidationMessageFor(x => x.VacancyModel.EducationId, "", new { @class = "text-danger" })
 
                 <label>Şəhər</label>
-                @Html.DropDownListFor(x => x.AddVacancyModel.CityId, new SelectList(Model.Cities, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
-                @Html.ValidationMessageFor(x => x.AddVacancyModel.CityId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(x => x.VacancyModel.CityId, new SelectList(Model.Cities, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
+                @Html.ValidationMessageFor(x => x.VacancyModel.CityId, "", new { @class = "text-danger" })
 
                 <label>Təcrübə</label>
-                @Html.DropDownListFor(x => x.AddVacancyModel.ExperienceId, new SelectList(Model.Experiences, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
-                @Html.ValidationMessageFor(x => x.AddVacancyModel.ExperienceId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(x => x.VacancyModel.ExperienceId, new SelectList(Model.Experiences, "Value", "Text"), new { @class = "common-input mb-20 form-control" })
+                @Html.ValidationMessageFor(x => x.VacancyModel.ExperienceId, "", new { @class = "text-danger" })
 
-                <label asp-for="AddVacancyModel.Age">Email</label>
-                <input asp-for="AddVacancyModel.Email" placeholder="" class="common-input mb-20 form-control" required="" type="text">
-                <span asp-validation-for="AddVacancyModel.Email"></span>
+                <label asp-for="VacancyModel.Age">Email</label>
+                <input asp-for="VacancyModel.Email" placeholder="" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="VacancyModel.Email"></span>
 
-                <label asp-for="AddVacancyModel.PhoneNumber">Telefon</label>
-                <input asp-for="AddVacancyModel.PhoneNumber" placeholder="" class="common-input mb-20 form-control" required="" type="text">
-                <span asp-validation-for="AddVacancyModel.PhoneNumber"></span>
+                <label asp-for="VacancyModel.PhoneNumber">Telefon</label>
+                <input asp-for="VacancyModel.PhoneNumber" placeholder="" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="VacancyModel.PhoneNumber"></span>
 
-                <label asp-for="AddVacancyModel.EndDate">Bitmə tarixi</label>
-                <input asp-for="AddVacancyModel.EndDate" id="todayDate" placeholder="" class="common-input mb-20 form-control" required="" type="date">
-                <span asp-validation-for="AddVacancyModel.EndDate"></span>
+                <label asp-for="VacancyModel.EndDate">Bitmə tarixi</label>
+                <input asp-for="VacancyModel.EndDate" id="todayDate" placeholder="" class="common-input mb-20 form-control" required="" type="date">
+                <span asp-validation-for="VacancyModel.EndDate"></span>
 
-                <label asp-for="AddVacancyModel.JobInformation">İş haqqında məlumat</label>
-                <textarea asp-for="AddVacancyModel.JobInformation" class="common-textarea mt-10 form-control"></textarea>
-                <span asp-validation-for="AddVacancyModel.JobInformation"></span>
+                <label asp-for="VacancyModel.JobInformation">İş haqqında məlumat</label>
+                <textarea asp-for="VacancyModel.JobInformation" class="common-textarea mt-10 form-control"></textarea>
+                <span asp-validation-for="VacancyModel.JobInformation"></span>
 
-                <label asp-for="AddVacancyModel.Requirements">Tələblər</label>
-                <textarea asp-for="AddVacancyModel.Requirements" class="common-textarea mt-10 form-control"></textarea>
-                <span asp-validation-for="AddVacancyModel.Requirements"></span>
+                <label asp-for="VacancyModel.Requirements">Tələblər</label>
+                <textarea asp-for="VacancyModel.Requirements" class="common-textarea mt-10 form-control"></textarea>
+                <span asp-validation-for="VacancyModel.Requirements"></span>
                 <br />
 
                 <button type="submit" class="btn btn-info">Təstiq et</button>

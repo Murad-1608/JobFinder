@@ -56,7 +56,7 @@ namespace WebUI.Areas.Admin.Controllers
         public IActionResult Add()
         {
             VacancyViewModel vacancyViewModel = new VacancyViewModel();
-            vacancyViewModel = ViewModel(new AddVacancyModel());
+            vacancyViewModel = ViewModel(new VacancyModel());
 
             return View(vacancyViewModel);
         }
@@ -68,32 +68,56 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 Vacancy vacancy = new()
                 {
-                    CategoryId = viewModel.AddVacancyModel.CategoryId,
-                    CityId = viewModel.AddVacancyModel.CityId,
-                    ExperienceId = viewModel.AddVacancyModel.ExperienceId,
-                    EducationId = viewModel.AddVacancyModel.EducationId,
-                    Email = viewModel.AddVacancyModel.Email,
-                    PhoneNumber = viewModel.AddVacancyModel.PhoneNumber,
-                    Position = viewModel.AddVacancyModel.Position,
-                    Company = viewModel.AddVacancyModel.Company,
-                    Age = viewModel.AddVacancyModel.Age,
-                    Salary = viewModel.AddVacancyModel.Salary,
-                    Requirements = viewModel.AddVacancyModel.Requirements,
-                    JobInformation = viewModel.AddVacancyModel.JobInformation,
+                    CategoryId = viewModel.VacancyModel.CategoryId,
+                    CityId = viewModel.VacancyModel.CityId,
+                    ExperienceId = viewModel.VacancyModel.ExperienceId,
+                    EducationId = viewModel.VacancyModel.EducationId,
+                    Email = viewModel.VacancyModel.Email,
+                    PhoneNumber = viewModel.VacancyModel.PhoneNumber,
+                    Position = viewModel.VacancyModel.Position,
+                    Company = viewModel.VacancyModel.Company,
+                    Age = viewModel.VacancyModel.Age,
+                    Salary = viewModel.VacancyModel.Salary,
+                    Requirements = viewModel.VacancyModel.Requirements,
+                    JobInformation = viewModel.VacancyModel.JobInformation,
                     IsActive = true,
                     IsPremium = false,
                     CreateDate = DateTime.Now,
-                    EndDate = viewModel.AddVacancyModel.EndDate,
+                    EndDate = viewModel.VacancyModel.EndDate,
                 };
                 vacancyService.Add(vacancy);
                 return RedirectToAction("index");
             }
-            viewModel = ViewModel(viewModel.AddVacancyModel);
+            viewModel = ViewModel(viewModel.VacancyModel);
 
             return View(viewModel);
         }
 
-        private VacancyViewModel ViewModel(AddVacancyModel model)
+        public IActionResult Update(int id)
+        {
+            var vacancy = vacancyService.Details(id: id);
+
+            VacancyModel viewModel = new VacancyModel()
+            {
+                Age = vacancy.Age,
+                Salary = vacancy.Salary,
+                Company = vacancy.Company,
+                Requirements = vacancy.Requirements,
+                JobInformation = vacancy.JobInformation,
+                Email = vacancy.Email,
+                CategoryId = vacancy.CategoryId,
+                CityId = vacancy.CityId,
+                EducationId = vacancy.EducationId,
+                EndDate = vacancy.EndDate,
+                ExperienceId = vacancy.ExperienceId,
+                PhoneNumber = vacancy.PhoneNumber,
+                Position = vacancy.Position
+            };
+            return View(viewModel);
+
+        }
+
+        private VacancyViewModel ViewModel(VacancyModel model)
         {
             List<SelectListItem> categories = (from i in categoryService.GetAll()
                                                select new SelectListItem
@@ -132,7 +156,7 @@ namespace WebUI.Areas.Admin.Controllers
                 Experiences = experiences,
                 Cities = city,
                 Educations = education,
-                AddVacancyModel = model
+                VacancyModel = model
             };
 
             return viewmodel;

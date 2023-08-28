@@ -1,0 +1,65 @@
+﻿@using WebUI.Areas.Admin.Models
+
+@model VacancyModel
+<!-- Start post Area -->
+<h3>Yeni elan</h3>
+<br />
+<div class="card-body">
+    <form class="forms-sample" method="post" asp-controller="vacancy" asp-action="add">
+        <div class="row">
+            <div class="col-lg-12 form-group">
+                <input type="hidden" asp-for="ExperienceId" />
+                <input type="hidden" asp-for="CategoryId" />
+                <input type="hidden" asp-for="EducationId" />
+                <input type="hidden" asp-for="CityId" />
+
+                <label for="" asp-for="Position">Vəzifə</label>
+                <input asp-for="Position" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="Position"></span>
+
+                <label for="" asp-for="Company">Şirkət</label>
+                <input asp-for="Company" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="Company"></span>
+
+                <label for="" asp-for="Age">Yaş</label>
+                <input asp-for="Age" placeholder="Məs. 22-25" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="Age"></span>
+
+                <label for="" asp-for="Salary">Maaş</label>
+                <input asp-for="Salary" placeholder="Məs. 1000-1500 AZN. Müsahibə əsasında olarsa müsahibə əsasında yazmağınız kifayet edir" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="Salary"></span>
+
+                <label asp-for="Age">Email</label>
+                <input asp-for="Email" placeholder="" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="Email"></span>
+
+                <label asp-for="PhoneNumber">Telefon</label>
+                <input asp-for="PhoneNumber" placeholder="" class="common-input mb-20 form-control" required="" type="text">
+                <span asp-validation-for="PhoneNumber"></span>
+
+                <label asp-for="EndDate">Bitmə tarixi</label>
+                <input asp-for="EndDate" id="todayDate" placeholder="" class="common-input mb-20 form-control" required="" type="date">
+                <span asp-validation-for="EndDate"></span>
+
+                <label asp-for="JobInformation">İş haqqında məlumat</label>
+                <textarea asp-for="JobInformation" class="common-textarea mt-10 form-control" style="height:250px"></textarea>
+                <span asp-validation-for="JobInformation"></span>
+
+                <label asp-for="Requirements">Tələblər</label>
+                <textarea asp-for="Requirements" class="common-textarea mt-10 form-control" style="height:250px"></textarea>
+                <span asp-validation-for="Requirements"></span>
+                <br />
+
+                <button type="submit" class="btn btn-info">Təstiq et</button>
+                <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                <br />
+            </div>
+        </div>
+    </form>
+</div>
+<!-- End post Area -->
+
+<script>
+    const today = new Date().toISOString().substr(0, 10);
+    document.getElementById("todayDate").value = today;
+</script>
